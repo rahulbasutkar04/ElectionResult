@@ -4,6 +4,7 @@ import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
 import com.amaap.electionresult.customeexceptions.NoDataFoundInFileException;
 import com.amaap.electionresult.io.datafilereader.DataExtractor;
 import com.amaap.electionresult.io.datafilereader.DataProcessor;
+import com.amaap.electionresult.models.DisplayWinner;
 import com.amaap.electionresult.models.VoteCalculator;
 import org.junit.jupiter.api.Test;
 
