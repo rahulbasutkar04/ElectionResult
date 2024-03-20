@@ -1,5 +1,6 @@
 
 import com.amaap.electionresult.customeexceptions.IllegalFileFormatException;
+import com.amaap.electionresult.customeexceptions.NoDataFoundInFileException;
 import com.amaap.electionresult.io.datafilereader.DataExtractor;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DataExtractorTest {
 
     @Test
-    void shouldAbleToReadFileFromTheUser() throws IllegalFileFormatException {
+    void shouldAbleToReadFileFromTheUser() throws IllegalFileFormatException, NoDataFoundInFileException {
         //Arrange
         DataExtractor dataExtractor=new DataExtractor();
 
@@ -22,8 +23,7 @@ public class DataExtractorTest {
     }
 
     @Test
-
-    void shouldAbleToTakeOnlyTextFileAsInput(){
+    void shouldAbleToTakeOnlyTextFileAsInputIfNotThrowException(){
         //Arrange
         DataExtractor dataExtractor=new DataExtractor();
 
@@ -34,5 +34,20 @@ public class DataExtractorTest {
 
 
     }
+
+    @Test
+    void shouldAbleToThrowExceptionIfNoDataFoundInFile()
+    {
+        //Arrange
+        DataExtractor dataExtractor=new DataExtractor();
+        //Act and Assert
+
+        assertThrows(NoDataFoundInFileException.class,()->{
+           dataExtractor.readFile("D:\\ElectionResult\\src\\test\\DataFilesTest\\demo1.txt");
+        });
+
+
+    }
+
 
 }
