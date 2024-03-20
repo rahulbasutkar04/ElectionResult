@@ -10,30 +10,36 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 
 public class DisplayWinner {
-
     public static void displayWinners(Map<String, Map<String, Integer>> winnersData) {
+        Map<String, Integer> totalVotesInCity = VoteCalculator.getTotalVoteCountInCity();
+
         for (String constituency : winnersData.keySet()) {
             System.out.println("Constituency: " + constituency);
             Map<String, Integer> winnerInfo = winnersData.get(constituency);
-            for (String partyCode : winnerInfo.keySet()) {
-                String partyName = PartyCodes.getFullName(partyCode); // Corrected method invocation
-                int votes = winnerInfo.get(partyCode);
-                System.out.println("Winner: " + partyName + " (" + partyCode + ") - Votes: " + votes);
+            int totalVotes = totalVotesInCity.get(constituency);
+
+            for (Map.Entry<String, Integer> entry : winnerInfo.entrySet()) {
+                String partyCode = entry.getKey();
+                int votes = entry.getValue();
+                String partyName = PartyCodes.getFullName(partyCode);
+
+                // Calculate the percentage of votes for the winning party
+                double votePercentage = calculateVotePercentage(votes, totalVotes);
+
+                // Display the winner and the percentage of votes
+                System.out.println("Winner: " + partyName + " (" + partyCode + ") - Votes: " + votes +
+                        " - Percentage of Total Votes: " + votePercentage + "%");
             }
             System.out.println(); // Add a blank line between constituencies
         }
-
     }
 
-    public static void main(String[] args) throws NoDataFoundInFileException, IllegalFileFormatException, EmptyFilepathException, FileNotFoundException, IllegalPartyNameException {
-        String path = "D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt";
-        DataExtractor dataExtractor = new DataExtractor();
-        dataExtractor.readFile(path);
-
-        // Retrieve winners data from VoteCalculator
-        Map<String, Map<String, Integer>> winnersData = VoteCalculator.getWinnersData();
-
-        // Display winners data
-        DisplayWinner.displayWinners(winnersData);
+    private static double calculateVotePercentage(int votes, int totalVotes) {
+        return ((double) votes / totalVotes) * 100;
     }
+
+
+
+
+
 }

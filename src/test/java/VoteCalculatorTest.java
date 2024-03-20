@@ -41,8 +41,9 @@ public class VoteCalculatorTest {
 
         System.out.println(expected);
         System.out.println(actual);
-
+        System.out.println(VoteCalculator.getWinnersData());
         // Assert
         assertEquals(expected, actual);//will check city name of party who has more number of votes
+
     }
 }

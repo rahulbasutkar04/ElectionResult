@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class DataProcessor {
 
+
    private static  Map<String, Map<String, Integer>> resultMap = new HashMap<>();
 
     public static Map<String, Map<String, Integer>> getResultMap() {
