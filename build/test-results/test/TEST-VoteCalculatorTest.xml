@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="VoteCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-20T10:29:00" hostname="RAHULSLAPPY" time="0.074">
+  <properties/>
+  <testcase name="shouldAbleToGetThePartyNameWithHigherVoteWithCityName()" classname="VoteCalculatorTest" time="0.074"/>
+  <system-out><![CDATA[{Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
+{Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -7,7 +7,11 @@ import java.io.FileNotFoundException;
 public class DataExtractor {
 
 
-    public boolean readFile(String path) throws IllegalFileFormatException, NoDataFoundInFileException, FileNotFoundException {
+    public boolean readFile(String path) throws IllegalFileFormatException, NoDataFoundInFileException, FileNotFoundException, IllegalPartyNameException, EmptyFilepathException {
+
+        if(path.isEmpty()) {
+            throw  new EmptyFilepathException("Path not found  / provide path");
+        }
         if (!path.toLowerCase().endsWith(".txt")) {
             throw new IllegalFileFormatException("Invalid file format. Please provide a .txt file.");
         }
@@ -24,7 +28,7 @@ public class DataExtractor {
         //if above condition fails that means we can do process  with file
 
 
-        return DataProcessor.dataProcessor(path); // Placeholder return statement
+        return DataProcessor.processor(path); // Placeholder return statement
     }
 
 
