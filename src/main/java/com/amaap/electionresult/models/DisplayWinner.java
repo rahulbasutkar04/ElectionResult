@@ -1,12 +1,5 @@
 package com.amaap.electionresult.models;
 
-import com.amaap.electionresult.customeexceptions.EmptyFilepathException;
-import com.amaap.electionresult.customeexceptions.IllegalFileFormatException;
-import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.customeexceptions.NoDataFoundInFileException;
-import com.amaap.electionresult.io.datafilereader.DataExtractor;
-
-import java.io.FileNotFoundException;
 import java.util.Map;
 
 public class DisplayWinner {
@@ -37,9 +30,6 @@ public class DisplayWinner {
     private static double calculateVotePercentage(int votes, int totalVotes) {
         return ((double) votes / totalVotes) * 100;
     }
-
-
-
 
 
 }

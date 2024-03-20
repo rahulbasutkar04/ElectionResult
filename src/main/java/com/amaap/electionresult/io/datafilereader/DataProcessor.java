@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class DataProcessor {
 
 
-   private static  Map<String, Map<String, Integer>> resultMap = new HashMap<>();
+    private static Map<String, Map<String, Integer>> resultMap = new HashMap<>();
 
     public static Map<String, Map<String, Integer>> getResultMap() {
         return resultMap;
@@ -22,19 +22,19 @@ public class DataProcessor {
     public static boolean processor(String path) throws FileNotFoundException, IllegalPartyNameException {
 
 
-            File file = new File(path);
-            Scanner scanner = new Scanner(file);
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
 
-            boolean dataProcessed = false; // Flag to track if any data is processed
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                processLine(line, resultMap);
-                dataProcessed = true; // Set flag to true if data is processed
-            }
-            scanner.close();
-
-            return dataProcessed; // Return true if data is processed, otherwise false
+        boolean dataProcessed = false; // Flag to track if any data is processed
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            processLine(line, resultMap);
+            dataProcessed = true; // Set flag to true if data is processed
         }
+        scanner.close();
+
+        return dataProcessed; // Return true if data is processed, otherwise false
+    }
 
     private static void processLine(String line, Map<String, Map<String, Integer>> resultMap) throws IllegalPartyNameException {
         // Split the line into parts
@@ -60,6 +60,7 @@ public class DataProcessor {
         }
         resultMap.put(city, partyVotesMap);
     }
+
     // Method to check if the party name is valid using the enum
     private static boolean isValidParty(String partyName) {
         for (PartyCodes party : PartyCodes.values()) {

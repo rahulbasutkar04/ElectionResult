@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DataProcessorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-03-20T12:30:52" hostname="RAHULSLAPPY" time="0.008">
+  <properties/>
+  <testcase name="shouldAbleToThrowExceptionIfOtherThanAvailablePartyNameFoundWhileProcessingData()" classname="DataProcessorTest" time="0.003"/>
+  <testcase name="shoudlAbleToReturnTrueIfProcessedDataIsAddedToTheList()" classname="DataProcessorTest" time="0.004"/>
+  <system-out><![CDATA[{Banglore={BJP=50, NCP=43, CPI=10, INC=20}, Pune={BJP=21, NCP=10, CPI=40, BSP=4, INC=90}, Kolkata={BJP=1020, NCP=120, CPI=500, INC=1000}}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

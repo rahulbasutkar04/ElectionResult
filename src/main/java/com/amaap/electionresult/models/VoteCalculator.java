@@ -2,6 +2,7 @@ package com.amaap.electionresult.models;
 
 import java.util.HashMap;
 import java.util.Map;
+
 public class VoteCalculator {
     private static Map<String, Map<String, Integer>> winnersData = new HashMap<>();
     private static Map<String, Integer> totalVoteCountInCity = new HashMap<>();
@@ -35,7 +36,6 @@ public class VoteCalculator {
 
             // Store the total number of votes in the city
             totalVoteCountInCity.put(city, totalVotesInCity);
-
             // Convert party name to party code using the PartyCodes enum
             String winningPartyName = PartyCodes.valueOf(winningPartyCode).name();
             // Store the winning party code and its votes for the current city
