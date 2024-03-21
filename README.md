@@ -1,4 +1,4 @@
-# Class Diagram for Election Result Management
+# OOMD for Election Result Management
 
 ## Classes:
 
