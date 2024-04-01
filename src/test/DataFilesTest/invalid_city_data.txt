@@ -1,0 +1,3 @@
+Mombai, BJP, 50, INC, 20, CPI, 10, NCP, 43
+Pune, INC, 90, CPI, 40, BJP, 21, NCP, 10, BSP,4
+Ranchi, BJP,1020,INC, 1000,CPI, 500,NCP, 120
