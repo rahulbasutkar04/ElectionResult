@@ -19,6 +19,7 @@ public enum PartyCodes {
                 return party.fullName;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Invalid party code: " + code);
     }
+
 }

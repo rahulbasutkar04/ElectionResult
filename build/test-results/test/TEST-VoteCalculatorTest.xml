@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VoteCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-20T12:30:52" hostname="RAHULSLAPPY" time="0.012">
+<testsuite name="VoteCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-01T07:39:24" hostname="RAHULSLAPPY" time="0.029">
   <properties/>
-  <testcase name="shouldAbleToGetThePartyNameWithHigherVoteWithCityName()" classname="VoteCalculatorTest" time="0.012"/>
+  <testcase name="shouldAbleToGetThePartyNameWithHigherVoteWithCityName()" classname="VoteCalculatorTest" time="0.029"/>
   <system-out><![CDATA[{Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
 {Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
 {Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}

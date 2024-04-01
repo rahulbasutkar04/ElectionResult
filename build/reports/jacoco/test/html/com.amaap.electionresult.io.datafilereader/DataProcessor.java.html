@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataProcessor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.io.datafilereader</a> &gt; <span class="el_source">DataProcessor.java</span></div><h1>DataProcessor.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.io.datafilereader;
+
+
+import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
+import com.amaap.electionresult.models.PartyCodes;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+<span class="fc" id="L13">public class DataProcessor {</span>
+
+
+<span class="fc" id="L16">    private static Map&lt;String, Map&lt;String, Integer&gt;&gt; resultMap = new HashMap&lt;&gt;();</span>
+
+    public static Map&lt;String, Map&lt;String, Integer&gt;&gt; getResultMap() {
+<span class="fc" id="L19">        return resultMap;</span>
+    }
+
+    public static boolean processor(String path) throws FileNotFoundException, IllegalPartyNameException {
+
+
+<span class="fc" id="L25">        File file = new File(path);</span>
+<span class="fc" id="L26">        Scanner scanner = new Scanner(file);</span>
+
+<span class="fc" id="L28">        boolean dataProcessed = false; // Flag to track if any data is processed</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        while (scanner.hasNextLine()) {</span>
+<span class="fc" id="L30">            String line = scanner.nextLine();</span>
+<span class="fc" id="L31">            processLine(line, resultMap);</span>
+<span class="fc" id="L32">            dataProcessed = true; // Set flag to true if data is processed</span>
+<span class="fc" id="L33">        }</span>
+<span class="fc" id="L34">        scanner.close();</span>
+
+<span class="fc" id="L36">        return dataProcessed; // Return true if data is processed, otherwise false</span>
+    }
+
+    private static void processLine(String line, Map&lt;String, Map&lt;String, Integer&gt;&gt; resultMap) throws IllegalPartyNameException {
+        // Split the line into parts
+<span class="fc" id="L41">        String[] parts = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L42">        String city = parts[0];</span>
+<span class="fc" id="L43">        Map&lt;String, Integer&gt; partyVotesMap = new HashMap&lt;&gt;();</span>
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (int i = 1; i &lt; parts.length; i += 2) {</span>
+<span class="fc" id="L46">            String party = parts[i].trim(); // Party name</span>
+<span class="fc" id="L47">            String votesStr = parts[i + 1].trim(); // Votes as string</span>
+            int votes;
+            try {
+<span class="fc" id="L50">                votes = Integer.parseInt(votesStr);</span>
+<span class="nc" id="L51">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L52">                e.printStackTrace();</span>
+<span class="nc" id="L53">                continue;</span>
+<span class="fc" id="L54">            }</span>
+            // Check if the party name is valid using the enum
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (!isValidParty(party)) {</span>
+<span class="fc" id="L57">                throw new IllegalPartyNameException(&quot;Invalid party name: &quot; + party);</span>
+            }
+<span class="fc" id="L59">            partyVotesMap.put(party, votes);</span>
+        }
+<span class="fc" id="L61">        resultMap.put(city, partyVotesMap);</span>
+<span class="fc" id="L62">    }</span>
+
+    // Method to check if the party name is valid using the enum
+    private static boolean isValidParty(String partyName) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        for (PartyCodes party : PartyCodes.values()) {</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            if (party.name().equals(partyName)) {</span>
+<span class="fc" id="L68">                return true;</span>
+            }
+        }
+<span class="fc" id="L71">        return false;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
