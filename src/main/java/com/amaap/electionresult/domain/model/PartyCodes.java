@@ -1,4 +1,4 @@
-package com.amaap.electionresult.domain.models;
+package com.amaap.electionresult.domain.model;
 
 public enum PartyCodes {
     INC("Indian National Congress"),

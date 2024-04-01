@@ -1,63 +1,77 @@
-import com.amaap.electionresult.domain.customeexceptions.EmptyFilepathException;
-import com.amaap.electionresult.domain.customeexceptions.IllegalFileFormatException;
-import com.amaap.electionresult.domain.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.domain.customeexceptions.NoDataFoundInFileException;
-import com.amaap.electionresult.io.datafilereader.DataProcessor;
-import com.amaap.electionresult.domain.models.ElectionManager;
-import com.amaap.electionresult.domain.models.VoteCalculator;
+package com.amaap.electionresult.domain;
+
+import com.amaap.electionresult.domain.model.ElectionDataAnalyser;
+import com.amaap.electionresult.io.Parser;
+import com.amaap.electionresult.io.exception.EmptyFilepathException;
+import com.amaap.electionresult.io.exception.IllegalFileFormatException;
+import com.amaap.electionresult.io.exception.IllegalPartyNameException;
+import com.amaap.electionresult.io.exception.NoDataFoundInFileException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ElectionManagerTest {
+    private static Parser parser;
+
+    @BeforeAll
+    static void setUpParser() throws IOException {
+        String partyNamesFilePath = "D:\\ElectionResult\\src\\test\\java\\com\\amaap\\electionresult\\configuration\\valid_party_names.yaml";
+        String cityNamesFilePath = "D:\\ElectionResult\\src\\test\\java\\com\\amaap\\electionresult\\configuration\\valid_city_names.yaml";
+        parser = new Parser();
+        parser.initialize(partyNamesFilePath, cityNamesFilePath);
+    }
 
     @Test
-    void shouldAbleToTakeFileInputFromUser() throws NoDataFoundInFileException, IllegalFileFormatException, EmptyFilepathException, FileNotFoundException, IllegalPartyNameException {
-        // Arrange
+    void shouldBeAbleToTakeFileInputFromUser() throws NoDataFoundInFileException, IllegalFileFormatException, EmptyFilepathException, IOException, IllegalPartyNameException {
+        // arrange
         ElectionManager electionManager = new ElectionManager();
 
-        // Act
+        // act
         boolean actual = electionManager.readFile("D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt");
 
-        // Assert
+        // assert
         assertTrue(actual);
     }
 
     @Test
-    void shouldAbleToProcessTheDataInWellFormat() throws FileNotFoundException, IllegalPartyNameException {
-        // Arrange
+    void shouldBeAbleToProcessTheDataInWellFormat() throws IOException, IllegalPartyNameException {
+        // arrange
         ElectionManager electionManager = new ElectionManager();
 
-        // Act
+        // act
         boolean actual = electionManager.processData("D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt");
 
-        // Assert
+        // assert
         assertTrue(actual);
     }
 
     @Test
-    void shouldAbleToCalculateVote() throws FileNotFoundException, IllegalPartyNameException {
-        // Arrange
+    void shouldBeAbleToCalculateVote() throws IOException, IllegalPartyNameException {
+        // arrange
+        Parser parser = new Parser();
         ElectionManager electionManager = new ElectionManager();
         electionManager.processData("D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt");
 
-        // Act
-        boolean actual = electionManager.calculateVote(DataProcessor.getResultMap());
+        // act
+        boolean actual = electionManager.calculateVote(parser.getResultMap());
 
-        // Assert
+        // assert
         assertTrue(actual);
     }
 
     @Test
-    void shouldAbleToDisplayResult() throws FileNotFoundException, IllegalPartyNameException {
-        // Arrange
+    void shouldBeAbleToDisplayResult() throws IOException, IllegalPartyNameException {
+        // arrange
+        Parser parser = new Parser();
         ElectionManager electionManager = new ElectionManager();
         electionManager.processData("D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt");
-        electionManager.calculateVote(DataProcessor.getResultMap());
+        electionManager.calculateVote(parser.getResultMap());
 
-        // Act: Display the result
-        electionManager.displayWinner(VoteCalculator.getWinnersData());
+        // act
+        electionManager.displayWinner(ElectionDataAnalyser.getWinnersData());
+
     }
 }
