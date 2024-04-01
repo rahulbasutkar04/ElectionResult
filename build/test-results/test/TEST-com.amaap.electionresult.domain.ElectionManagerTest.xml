@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.amaap.electionresult.domain.ElectionManagerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-04-01T20:53:34" hostname="RAHULSLAPPY" time="1.931">
+  <properties/>
+  <testcase name="shouldBeAbleToTakeFileInputFromUser()" classname="com.amaap.electionresult.domain.ElectionManagerTest" time="1.792"/>
+  <testcase name="shouldBeAbleToProcessTheDataInWellFormat()" classname="com.amaap.electionresult.domain.ElectionManagerTest" time="0.005"/>
+  <testcase name="shouldReturnFalseWhenNoWinners()" classname="com.amaap.electionresult.domain.ElectionManagerTest" time="0.028"/>
+  <testcase name="shouldBeAbleToDisplayResult()" classname="com.amaap.electionresult.domain.ElectionManagerTest" time="0.094"/>
+  <testcase name="shouldBeAbleToCalculateVote()" classname="com.amaap.electionresult.domain.ElectionManagerTest" time="0.005"/>
+  <system-out><![CDATA[{}
+{Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
+Constituency: Banglore
+Winner: Bhartiya Janta Party (BJP) - Votes: 50 - Percentage of Total Votes: 40.65040650406504%
+
+Constituency: Pune
+Winner: Indian National Congress (INC) - Votes: 90 - Percentage of Total Votes: 54.54545454545454%
+
+Constituency: Kolkata
+Winner: Bhartiya Janta Party (BJP) - Votes: 1020 - Percentage of Total Votes: 38.63636363636363%
+
+{Banglore={BJP=50}, Pune={INC=90}, Kolkata={BJP=1020}}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
