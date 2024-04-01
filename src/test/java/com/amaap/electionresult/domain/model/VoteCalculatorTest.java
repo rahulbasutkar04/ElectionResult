@@ -1,11 +1,10 @@
-import com.amaap.electionresult.customeexceptions.EmptyFilepathException;
-import com.amaap.electionresult.customeexceptions.IllegalFileFormatException;
-import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.customeexceptions.NoDataFoundInFileException;
+import com.amaap.electionresult.domain.customeexceptions.EmptyFilepathException;
+import com.amaap.electionresult.domain.customeexceptions.IllegalFileFormatException;
+import com.amaap.electionresult.domain.customeexceptions.IllegalPartyNameException;
+import com.amaap.electionresult.domain.customeexceptions.NoDataFoundInFileException;
 import com.amaap.electionresult.io.datafilereader.DataExtractor;
 import com.amaap.electionresult.io.datafilereader.DataProcessor;
-import com.amaap.electionresult.models.DisplayWinner;
-import com.amaap.electionresult.models.VoteCalculator;
+import com.amaap.electionresult.domain.models.VoteCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

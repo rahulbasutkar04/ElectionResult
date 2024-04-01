@@ -1,4 +1,4 @@
-package com.amaap.electionresult.models;
+package com.amaap.electionresult.domain.models;
 
 import org.junit.jupiter.api.Test;
 

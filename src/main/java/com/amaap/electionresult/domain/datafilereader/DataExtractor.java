@@ -1,9 +1,9 @@
 package com.amaap.electionresult.io.datafilereader;
 
-import com.amaap.electionresult.customeexceptions.EmptyFilepathException;
-import com.amaap.electionresult.customeexceptions.IllegalFileFormatException;
-import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.customeexceptions.NoDataFoundInFileException;
+import com.amaap.electionresult.domain.customeexceptions.EmptyFilepathException;
+import com.amaap.electionresult.domain.customeexceptions.IllegalFileFormatException;
+import com.amaap.electionresult.domain.customeexceptions.IllegalPartyNameException;
+import com.amaap.electionresult.domain.customeexceptions.NoDataFoundInFileException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

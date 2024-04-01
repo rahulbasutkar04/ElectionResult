@@ -1,8 +1,8 @@
-package com.amaap.electionresult.io.datafilereader;
+package com.amaap.electionresult.domain.datafilereader;
 
 
-import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.models.PartyCodes;
+import com.amaap.electionresult.domain.exception.IllegalPartyNameException;
+import com.amaap.electionresult.domain.model.PartyCodes;
 
 import java.io.File;
 import java.io.FileNotFoundException;

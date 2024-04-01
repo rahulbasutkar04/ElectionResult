@@ -1,5 +1,7 @@
-import com.amaap.electionresult.customeexceptions.IllegalPartyNameException;
-import com.amaap.electionresult.io.datafilereader.DataProcessor;
+package com.amaap.electionresult.domain.datafilereader;
+
+import com.amaap.electionresult.domain.exception.IllegalPartyNameException;
+import com.amaap.electionresult.domain.datafilereader.DataProcessor;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
