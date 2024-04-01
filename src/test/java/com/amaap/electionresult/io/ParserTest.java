@@ -18,11 +18,12 @@ class ParserTest {
         parser = new Parser();
     }
 
+    String partyNamesFilePath = "D:\\ElectionResult\\src\\test\\java\\com\\amaap\\electionresult\\configuration\\valid_party_names.yaml";
+    String cityNamesFilePath = "D:\\ElectionResult\\src\\test\\java\\com\\amaap\\electionresult\\configuration\\valid_city_names.yaml";
+
+
     @Test
     void shouldBeAbleToInitializeParserWithValidConfigurations() {
-        // arrange
-        String partyNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_party_names.yaml";
-        String cityNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_city_names.yaml";
 
         // act & assert
         assertDoesNotThrow(() -> parser.initialize(partyNamesFilePath, cityNamesFilePath));
@@ -41,8 +42,6 @@ class ParserTest {
     void shouldBeAbleToProcessFileAndPopulateResultMap() throws IOException {
         // arrange
         String filePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\demo.txt";
-        String partyNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_party_names.yaml";
-        String cityNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_city_names.yaml";
 
         try {
             parser.initialize(partyNamesFilePath, cityNamesFilePath);
@@ -71,8 +70,6 @@ class ParserTest {
     void shouldThrowIllegalPartyNameExceptionIfInvalidPartyName() {
         // arrange
         String filePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\demo2.txt";
-        String partyNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_party_names.yaml";
-        String cityNamesFilePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\valid_city_names.yaml";
         try {
             parser.initialize(partyNamesFilePath, cityNamesFilePath);
         } catch (IOException e) {
@@ -82,4 +79,34 @@ class ParserTest {
         // act & assert
         assertThrows(IllegalPartyNameException.class, () -> parser.processFile(filePath));
     }
+
+    @Test
+    void shouldThrowIllegalArgumentExceptionIfInvalidCityName() {
+        // arrange
+        String filePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\invalid_city_data.txt";
+        try {
+            parser.initialize(partyNamesFilePath, cityNamesFilePath);
+        } catch (IOException e) {
+            fail("Initialization failed");
+        }
+
+        // act & assert
+        assertThrows(IllegalArgumentException.class, () -> parser.processFile(filePath));
+    }
+
+
+    @Test
+    void shouldThrowIllegalPartyNameExceptionIfMissingPartyName() {
+        // arrange
+        String filePath = "D:\\ElectionResult\\src\\test\\DataFilesTest\\missing_party.txt";
+        try {
+            parser.initialize(partyNamesFilePath, cityNamesFilePath);
+        } catch (IOException e) {
+            fail("Initialization failed");
+        }
+
+        // act & assert
+        assertThrows(IllegalPartyNameException.class, () -> parser.processFile(filePath));
+    }
+
 }

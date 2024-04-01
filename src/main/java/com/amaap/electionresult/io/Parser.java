@@ -37,9 +37,7 @@ public class Parser {
     }
 
     public boolean processFile(String filePath) throws IOException, IllegalPartyNameException {
-        if (validCityNames == null) {
-            throw new IllegalStateException("Valid city names have not been initialized.");
-        }
+
 
         File file = new File(filePath);
         try (Scanner scanner = new Scanner(file)) {
@@ -49,17 +47,12 @@ public class Parser {
                 processLine(line);
                 dataProcessed = true;
             }
-            if (resultMap.isEmpty()) {
-                return false;
-            }
+
             return dataProcessed;
         }
     }
 
     private static void processLine(String line) throws IllegalPartyNameException {
-        if (validCityNames == null) {
-            throw new IllegalStateException("Valid city names have not been initialized.");
-        }
         String[] parts = line.split(",");
         String city = parts[0].trim();
         if (!validCityNames.contains(city)) {
@@ -71,12 +64,7 @@ public class Parser {
         for (int i = 1; i < parts.length; i += 2) {
             String party = parts[i].trim();
             String votesStr = parts[i + 1].trim();
-            int votes;
-            try {
-                votes = Integer.parseInt(votesStr);
-            } catch (NumberFormatException e) {
-                throw new IllegalPartyNameException("Invalid vote count: " + votesStr);
-            }
+            int votes = Integer.parseInt(votesStr);
             if (!validPartyNames.contains(party)) {
                 throw new IllegalPartyNameException("Invalid party name: " + party);
             }
@@ -84,4 +72,5 @@ public class Parser {
         }
         resultMap.put(city, partyVotesMap);
     }
+
 }

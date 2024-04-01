@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ElectionManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.domain</a> &gt; <span class="el_source">ElectionManager.java</span></div><h1>ElectionManager.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.domain;
+
+import com.amaap.electionresult.io.DataExtractor;
+import com.amaap.electionresult.io.Parser;
+import com.amaap.electionresult.io.exception.EmptyFilepathException;
+import com.amaap.electionresult.io.exception.IllegalFileFormatException;
+import com.amaap.electionresult.io.exception.IllegalPartyNameException;
+import com.amaap.electionresult.io.exception.NoDataFoundInFileException;
+import com.amaap.electionresult.domain.model.ElectionDataAnalyser;
+
+import java.io.IOException;
+import java.util.Map;
+
+<span class="fc" id="L14">public class ElectionManager {</span>
+    public boolean readFile(String filepath) throws NoDataFoundInFileException, IllegalFileFormatException, EmptyFilepathException, IOException, IllegalPartyNameException {
+<span class="fc" id="L16">        DataExtractor dataExtractor = new DataExtractor();</span>
+<span class="fc" id="L17">        return dataExtractor.readFile(filepath);</span>
+    }
+
+    public boolean processData(String path) throws IOException, IllegalPartyNameException {
+<span class="fc" id="L21">        Parser parser = new Parser();</span>
+<span class="fc" id="L22">        return parser.processFile(path);</span>
+    }
+
+    public boolean calculateVote(Map&lt;String, Map&lt;String, Integer&gt;&gt; resultMap) {
+
+<span class="fc" id="L27">        ElectionDataAnalyser electionDataAnalyser = new ElectionDataAnalyser();</span>
+<span class="fc" id="L28">        electionDataAnalyser.getPartyNameWithMaxVote(resultMap);</span>
+
+
+<span class="fc" id="L31">        System.out.println(electionDataAnalyser.getWinnersData());</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (electionDataAnalyser.getWinnersData().size() != 0) return true;</span>
+
+<span class="nc" id="L34">        return false;</span>
+    }
+
+    public void displayWinner(Map&lt;String, Map&lt;String, Integer&gt;&gt; winnersData) {
+<span class="fc" id="L38">        DisplayWinner displayWinner = new DisplayWinner();</span>
+<span class="fc" id="L39">        displayWinner.displayWinners(winnersData);</span>
+
+<span class="fc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
