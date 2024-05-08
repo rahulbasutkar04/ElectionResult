@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.domain.model.ElectionDataAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-01T20:53:36" hostname="RAHULSLAPPY" time="0.012">
-  <properties/>
-  <testcase name="shouldBeAbleToGetThePartyNameWithHigherVoteWithCityName()" classname="com.amaap.electionresult.domain.model.ElectionDataAnalyserTest" time="0.012"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
