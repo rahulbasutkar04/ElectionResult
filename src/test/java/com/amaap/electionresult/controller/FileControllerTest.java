@@ -1,19 +1,24 @@
 package com.amaap.electionresult;
 
-import com.amaap.electionresult.controller.FileController;
-import com.amaap.electionresult.controller.dto.Http;
-import com.amaap.electionresult.controller.dto.Response;
+import com.amaap.electionresult.service.FileReaderService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileControllerTest {
 
+    FileReaderService fileReaderService;
+    @BeforeEach
+    void setup()
+    {
+        fileReaderService=new FileReaderService();
+    }
     @Test
     void shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser()
     {
         // arrange
-        FileController fileController =new FileController();
+        FileController fileController =new FileController(fileReaderService);
         Response expected=new Response(Http.OK, Http.OK.getMessage());
         String path="";
 

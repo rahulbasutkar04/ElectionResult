@@ -2,7 +2,7 @@ package com.amaap.electionresult;
 
 import java.util.Objects;
 
-public class Response {
+public class Response{
     private final Http status;
     private final String message;
 
