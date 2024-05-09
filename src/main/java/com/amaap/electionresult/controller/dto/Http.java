@@ -1,4 +1,4 @@
-package com.amaap.electionresult;
+package com.amaap.electionresult.controller.dto;
 
 public enum Http {
     OK("File Uploaded Successfully.."),

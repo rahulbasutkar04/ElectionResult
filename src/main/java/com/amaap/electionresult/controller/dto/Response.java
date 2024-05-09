@@ -1,4 +1,4 @@
-package com.amaap.electionresult;
+package com.amaap.electionresult.controller.dto;
 
 import java.util.Objects;
 
@@ -32,3 +32,15 @@ public class Response{
         return Objects.hash(status, message);
     }
 }
+
+
+// should check if the path contains the file or not
+// shoudl check if file has data or not
+// should check if it contains extra spaces
+
+// structural validations are done here
+// then it then if extra space forun it it romoves that spces(trim) and then paesses easch line of data to the parser
+// parser does the data validation such as if it contains the format like city name ,party code ,and number which is vote
+// after doing that it will check whethee the name of city is presnt in cnfiguration also check party code preent in configuration file and also check if the vote count is not negative..
+// then after parsing if data is right it will store into repository for further process..
+//then it will retun true only if parser returns true other wose false..if parser retrunr true that means all data is right and added to repostiryu
