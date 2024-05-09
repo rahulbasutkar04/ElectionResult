@@ -9,9 +9,11 @@ import java.util.Set;
 
 public class Validator {
     private final Set<String> validCityNames;
+    private final Set<String> validPartyCodes;
 
     public Validator() {
         this.validCityNames = loadValidCityNames("/validCityNames.yaml");
+        this.validPartyCodes = loadValidPartyCodes("/validPartyCodes.yaml");
     }
 
     public boolean isValidFormat(String line) {
@@ -30,8 +32,6 @@ public class Validator {
         return false;
 
     }
-
-
     public Set<String> loadValidCityNames(String filePath) {
         Set<String> cityNames = new HashSet<>();
         try (InputStream inputStream = getClass().getResourceAsStream(filePath);
@@ -45,4 +45,38 @@ public class Validator {
         }
         return cityNames;
     }
+
+
+
+    public boolean containsOnlyValidPartyCodes(String line) {
+        String[] tokens = line.split("\\s*,\\s*");
+
+        for (int i = 2; i < tokens.length; i += 2) { // Starting from index 2 and incrementing by 2
+            String partyCode = tokens[i].trim();
+            if (!validPartyCodes.contains(partyCode)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    private Set<String> loadValidPartyCodes(String filePath) {
+        Set<String> partyCodes = new HashSet<>();
+        try (InputStream inputStream = getClass().getResourceAsStream(filePath);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.trim().split(":");
+                if (parts.length > 0) {
+                    partyCodes.add(parts[0].trim());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return partyCodes;
+    }
+
 }
