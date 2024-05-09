@@ -22,7 +22,7 @@ public class FileControllerTest {
     }
 
     @Test
-    void shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser() throws Response {
+    void shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser() {
         // arrange
         FileController fileController = new FileController(fileReaderService);
         Response expected = new Response(Http.OK, Http.OK.getMessage());
@@ -36,7 +36,7 @@ public class FileControllerTest {
     }
 
     @Test
-    void shouldBeAbleToRespondWithBadRequestMessageIfGivenFilePathIsNotProceeded() throws Response {
+    void shouldBeAbleToRespondWithBadRequestMessageIfGivenFilePathIsNotProceeded() {
         // arrange
         FileController fileController = new FileController(fileReaderService);
         Response expected = new Response(Http.BAD_REQUEST, Http.BAD_REQUEST.getMessage());

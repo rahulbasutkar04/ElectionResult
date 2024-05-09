@@ -2,7 +2,7 @@ package com.amaap.electionresult.controller.dto;
 
 import java.util.Objects;
 
-public class Response{
+public class Response extends Throwable {
     private final Http status;
     private final String message;
 
