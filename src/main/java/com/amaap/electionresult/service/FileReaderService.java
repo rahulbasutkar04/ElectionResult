@@ -1,18 +1,20 @@
 package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
+import com.amaap.electionresult.service.exception.InvalidCityNameException;
 import com.amaap.electionresult.service.exception.InvalidFilePathException;
+import com.amaap.electionresult.service.exception.InvalidFormatException;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import com.amaap.electionresult.service.io.FileParser;
 
 import java.io.*;
 
 public class FileReaderService {
-    private final InMemoryElectionRepositoryData inMemoryElectionRepositoryData=InMemoryElectionRepositoryData.getInstance();
+    private final InMemoryElectionRepositoryData inMemoryElectionRepositoryData = InMemoryElectionRepositoryData.getInstance();
     FileParser fileParser = new FileParser();
 
 
-
-    public boolean readFile(String path) throws InvalidFilePathException, IOException {
+    public boolean readFile(String path) throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
 
         File file = new File(path);
 
@@ -35,8 +37,12 @@ public class FileReaderService {
                 if (!line.isEmpty()) {
                     String[] tokens = line.split("\\s*,\\s*");
                     line = String.join(", ", tokens);
-                    if (fileParser.parser(line)) {
-                        inMemoryElectionRepositoryData.inertIntoElectionData(line);
+                    try {
+                        if (fileParser.parser(line)) {
+                            inMemoryElectionRepositoryData.inertIntoElectionData(line);
+                        }
+                    } catch (InvalidCityNameException | InvalidFormatException | InvalidPartyCodeException e) {
+                        throw e; // Rethrow the caught exception
                     }
                 }
             }
