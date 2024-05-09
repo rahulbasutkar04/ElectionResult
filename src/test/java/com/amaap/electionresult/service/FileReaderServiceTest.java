@@ -1,7 +1,10 @@
 package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
+import com.amaap.electionresult.service.exception.InvalidCityNameException;
 import com.amaap.electionresult.service.exception.InvalidFilePathException;
+import com.amaap.electionresult.service.exception.InvalidFormatException;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +24,7 @@ class FileReaderServiceTest {
         inMemoryElectionRepositoryData.clear();
     }
     @Test
-    void shouldBeAbleToReadTheDataInFile() throws InvalidFilePathException, IOException {
+    void shouldBeAbleToReadTheDataInFile() throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
         // arrange
         FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
@@ -71,7 +74,8 @@ class FileReaderServiceTest {
     }
 
     @Test
-    void shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile() throws InvalidFilePathException, IOException {
+    void shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile() throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
+        // arrange
         FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
 
@@ -81,6 +85,21 @@ class FileReaderServiceTest {
 
         // assert
         assertEquals(2,actual.size());
+    }
+
+    @Test
+    void shouldThrowExceptionIfFileHasInvalidDataFound()
+    {
+        // arrange
+        FileReaderService fileReaderService = new FileReaderService();
+        String path = "D:\\ElectionResult\\src\\main\\resources\\invalidElectionData.txt";
+
+        // act & assert
+         assertThrows(Exception.class, () -> {
+            fileReaderService.readFile(path);
+        });
+
+
     }
 
 }

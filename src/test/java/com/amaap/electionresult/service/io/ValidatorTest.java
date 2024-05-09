@@ -40,18 +40,23 @@ class ValidatorTest {
     }
 
     @Test
-    void hasValidCityNames_ValidCityName_ReturnsTrue() {
+    void shouldBeAbleToReturnTrueIfLineHasValidCityNamesFromTheConfigurationFile(){
         assertTrue(validator.hasValidCityNames("Banglore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
     }
 
     @Test
-    void hasValidCityNames_InvalidCityName_ReturnsFalse() {
+    void shouldBeAbleToReturnTrueIfLineHasAnotherValidCityNamesFromTheConfigurationFile()  {
         assertTrue(validator.hasValidCityNames("Mumbai, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
+    }
+
+    @Test
+    void shouldBeAbleToReturnFalseIfLineHasInValidCityNameWhichIsNotInConfigurationFile()  {
+        assertFalse(validator.hasValidCityNames("Solapur, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
     }
 
 
     @Test
-    void testLoadValidCityNames() {
+    void shouldBeAbleToTestLoadValidCityNames() {
 
         // act
         Set<String> cityNames = validator.loadValidCityNames("/validCityNames.yaml");
@@ -61,6 +66,42 @@ class ValidatorTest {
         for (String cityName : cityNames) {
             System.out.println(cityName);
         }
+    }
+
+
+    @Test
+    void shouldBeAbleToCheckValidPartyCodesWhichIsInTheConfigurationFile() {
+        // arrange
+        String line = "Bangalore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP";
+
+        // act
+        boolean result = validator.containsOnlyValidPartyCodes(line);
+
+        // assert
+        assertTrue(result);
+    }
+
+    @Test
+    void shouldBeAbleToCheckIfGivenLineHasValidPartyCodeOrNot() {
+        // arrange
+        String line = "Bangalore, 11014, BJP, 17803, INVALID, 4923, CPI, 2069, NCP";
+
+        // act
+        boolean result = validator.containsOnlyValidPartyCodes(line);
+
+        // assert
+        assertFalse(result);
+    }
+    @Test
+    void  shouldBeAbleToReturnFalseIfLineDonNotHavePartyCodeAsItsPlace() {
+        // arrange
+        String line = "Bangalore, 11014, BJP, 17803, , 4923, CPI, 2069, NCP";
+
+        // act
+        boolean result = validator.containsOnlyValidPartyCodes(line);
+
+        // assert
+        assertFalse(result);
     }
 
 

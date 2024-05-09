@@ -4,7 +4,10 @@ import com.amaap.electionresult.controller.dto.Http;
 import com.amaap.electionresult.controller.dto.Response;
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.service.FileReaderService;
+import com.amaap.electionresult.service.exception.InvalidCityNameException;
 import com.amaap.electionresult.service.exception.InvalidFilePathException;
+import com.amaap.electionresult.service.exception.InvalidFormatException;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +28,7 @@ public class FileControllerTest {
     }
 
     @Test
-    void shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser() throws InvalidFilePathException, IOException {
+    void shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser() throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
         // arrange
         FileController fileController = new FileController(fileReaderService);
         Response expected = new Response(Http.OK, Http.OK.getMessage());
@@ -37,4 +40,5 @@ public class FileControllerTest {
         // assert
         assertEquals(expected, actual);
     }
+
 }
