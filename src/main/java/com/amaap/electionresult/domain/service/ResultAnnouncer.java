@@ -2,6 +2,7 @@ package com.amaap.electionresult.domain.service;
 
 import com.amaap.electionresult.domain.model.PartyNameMapper;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 public class ResultAnnouncer {
     PartyNameMapper partyNameMapper = new PartyNameMapper();
 
-    public void displayWinner() {
+    public void displayWinner() throws InvalidPartyCodeException {
         InMemoryElectionResultRepository inMemoryElectionResultRepository = InMemoryElectionResultRepository.getInstance();
         HashMap<String, HashMap<String, Integer>> winnerData = inMemoryElectionResultRepository.getWinnerData();
 
