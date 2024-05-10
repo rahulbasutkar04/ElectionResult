@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.service.io</a> &gt; <span class="el_source">Validator.java</span></div><h1>Validator.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.service.io;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Validator {
+    private final Set&lt;String&gt; validCityNames;
+    private final Set&lt;String&gt; validPartyCodes;
+
+<span class="fc" id="L14">    public Validator() {</span>
+<span class="fc" id="L15">        this.validCityNames = loadValidCityNames(&quot;/validCityNames.yaml&quot;);</span>
+<span class="fc" id="L16">        this.validPartyCodes = loadValidPartyCodes(&quot;/validPartyCodes.yaml&quot;);</span>
+<span class="fc" id="L17">    }</span>
+
+    public boolean isValidFormat(String line) {
+<span class="fc" id="L20">        String regex = &quot;^[A-Za-z]+(?:,\\s*\\d+\\s*,\\s*[A-Za-z]+\\s*)+(?:,\\s*\\d+\\s*)*$&quot;;</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (line.matches(regex)) return true;</span>
+
+<span class="fc" id="L23">        return false;</span>
+    }
+
+    public boolean hasValidCityNames(String line) {
+<span class="fc" id="L27">        String[] tokens = line.split(&quot;\\s*,\\s*&quot;);</span>
+<span class="fc" id="L28">        String cityName = tokens[0].trim();</span>
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (validCityNames.contains(cityName)) return true;</span>
+
+<span class="fc" id="L32">        return false;</span>
+
+    }
+    public Set&lt;String&gt; loadValidCityNames(String filePath) {
+<span class="fc" id="L36">        Set&lt;String&gt; cityNames = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L37">        try (InputStream inputStream = getClass().getResourceAsStream(filePath);</span>
+<span class="fc" id="L38">             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {</span>
+            String line;
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L41">                cityNames.add(line.trim());</span>
+            }
+<span class="nc" id="L43">        } catch (IOException e) {</span>
+<span class="nc" id="L44">            e.printStackTrace();</span>
+<span class="fc" id="L45">        }</span>
+<span class="fc" id="L46">        return cityNames;</span>
+    }
+
+
+
+    public boolean containsOnlyValidPartyCodes(String line) {
+<span class="fc" id="L52">        String[] tokens = line.split(&quot;\\s*,\\s*&quot;);</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        for (int i = 2; i &lt; tokens.length; i += 2) {</span>
+<span class="fc" id="L55">            String partyCode = tokens[i].trim();</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (!validPartyCodes.contains(partyCode)) {</span>
+<span class="fc" id="L57">                return false;</span>
+            }
+        }
+
+<span class="fc" id="L61">        return true;</span>
+    }
+
+
+    private Set&lt;String&gt; loadValidPartyCodes(String filePath) {
+<span class="fc" id="L66">        Set&lt;String&gt; partyCodes = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L67">        try (InputStream inputStream = getClass().getResourceAsStream(filePath);</span>
+<span class="fc" id="L68">             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {</span>
+            String line;
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L71">                String[] parts = line.trim().split(&quot;:&quot;);</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">                if (parts.length &gt; 0) {</span>
+<span class="fc" id="L73">                    partyCodes.add(parts[0].trim());</span>
+                }
+<span class="fc" id="L75">            }</span>
+<span class="nc" id="L76">        } catch (IOException e) {</span>
+<span class="nc" id="L77">            e.printStackTrace();</span>
+<span class="fc" id="L78">        }</span>
+<span class="fc" id="L79">        return partyCodes;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.service.FileReaderServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:42" hostname="RAHULSLAPPY" time="0.031">
+<testsuite name="com.amaap.electionresult.service.FileReaderServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-05-10T10:41:36" hostname="RAHULSLAPPY" time="0.047">
   <properties/>
-  <testcase name="shouldBeAbleToReadTheDataInFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.004"/>
-  <testcase name="shouldThrowExceptionIfGivenPathISNull()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.004"/>
+  <testcase name="shouldBeAbleToReadTheDataInFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.006"/>
+  <testcase name="shouldThrowExceptionIfGivenPathISNull()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.005"/>
   <testcase name="shouldThrowExceptionIfGivenPathISEmpty()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.004"/>
-  <testcase name="shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.004"/>
-  <testcase name="shouldThrowExceptionIfPathDoesNotHaveTheFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.003"/>
+  <testcase name="shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.009"/>
+  <testcase name="shouldThrowExceptionIfPathDoesNotHaveTheFile()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.009"/>
   <testcase name="shouldThrowExceptionIfFileHasInvalidDataFound()" classname="com.amaap.electionresult.service.FileReaderServiceTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

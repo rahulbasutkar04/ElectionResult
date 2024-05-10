@@ -7,7 +7,6 @@ import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 public class Main {
     public static void main(String[] args) throws InvalidPartyCodeException {
         AppConfig appConfig = new AppConfig();
-
         FileController fileController = appConfig.fileController();
         ElectionController electionController = appConfig.electionController();
 

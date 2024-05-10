@@ -51,7 +51,7 @@ public class Validator {
     public boolean containsOnlyValidPartyCodes(String line) {
         String[] tokens = line.split("\\s*,\\s*");
 
-        for (int i = 2; i < tokens.length; i += 2) { // Starting from index 2 and incrementing by 2
+        for (int i = 2; i < tokens.length; i += 2) {
             String partyCode = tokens[i].trim();
             if (!validPartyCodes.contains(partyCode)) {
                 return false;

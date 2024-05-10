@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.domain.DataExtractorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:40" hostname="RAHULSLAPPY" time="0.003">
+<testsuite name="com.amaap.electionresult.domain.DataExtractorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T10:41:33" hostname="RAHULSLAPPY" time="0.009">
   <properties/>
-  <testcase name="shouldBeAbleToTestExtractData()" classname="com.amaap.electionresult.domain.DataExtractorTest" time="0.003"/>
+  <testcase name="shouldBeAbleToTestExtractData()" classname="com.amaap.electionresult.domain.DataExtractorTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

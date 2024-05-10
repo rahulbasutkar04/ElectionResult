@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ElectionResultAnalyser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.domain.service</a> &gt; <span class="el_source">ElectionResultAnalyser.java</span></div><h1>ElectionResultAnalyser.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.domain.service;
+
+import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
+import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class ElectionResultAnalyser {
+    private final InMemoryElectionRepositoryData inMemoryElectionRepositoryData;
+    private final InMemoryElectionResultRepository inMemoryElectionResultRepository;
+<span class="fc" id="L13">    DataExtractor dataExtractor =DataExtractor.getInstance();</span>
+<span class="fc" id="L14">    ResultAnnouncer resultAnnouncer = new ResultAnnouncer();</span>
+
+
+<span class="fc" id="L17">    public ElectionResultAnalyser(InMemoryElectionRepositoryData inMemoryElectionRepositoryData, InMemoryElectionResultRepository inMemoryElectionResultRepository) {</span>
+<span class="fc" id="L18">        this.inMemoryElectionRepositoryData = inMemoryElectionRepositoryData;</span>
+<span class="fc" id="L19">        this.inMemoryElectionResultRepository = inMemoryElectionResultRepository;</span>
+<span class="fc" id="L20">    }</span>
+
+
+    public boolean analyseWinner() throws InvalidPartyCodeException {
+<span class="fc" id="L24">        List&lt;String&gt; data = inMemoryElectionRepositoryData.getElectionData();</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="fc" id="L26">            String line = data.get(i);</span>
+<span class="fc" id="L27">            HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt; extractedData = dataExtractor.ExtractData(line);</span>
+<span class="fc" id="L28">            HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt; WinnerData = VoteCalculator.calculateVotes(extractedData);</span>
+<span class="fc" id="L29">            inMemoryElectionResultRepository.ConstituencyResult(WinnerData);</span>
+
+        }
+<span class="fc" id="L32">        resultAnnouncer.displayWinner();</span>
+
+
+<span class="fc" id="L35">        return true;</span>
+    }
+
+
+}
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

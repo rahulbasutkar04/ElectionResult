@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.service.ElectionServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:40" hostname="RAHULSLAPPY" time="1.871">
+<testsuite name="com.amaap.electionresult.service.ElectionServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T10:41:33" hostname="RAHULSLAPPY" time="2.589">
   <properties/>
-  <testcase name="testGetWinners()" classname="com.amaap.electionresult.service.ElectionServiceTest" time="1.871"/>
+  <testcase name="testGetWinners()" classname="com.amaap.electionresult.service.ElectionServiceTest" time="2.589"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

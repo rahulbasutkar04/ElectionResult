@@ -5,7 +5,9 @@ import java.util.HashMap;
 public class DataExtractor {
 
     private static DataExtractor instance;
-    private DataExtractor() {}
+
+    private DataExtractor() {
+    }
 
     public static DataExtractor getInstance() {
         if (instance == null) {

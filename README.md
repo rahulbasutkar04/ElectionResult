@@ -4,36 +4,39 @@
 
 The task is to process election result data provided in a file format, analyze the results, and determine the winners for each city constituency. The input file contains data including the city name, party code, and the number of votes cast for each party.
 
-## Components
 
 ### Controller
-
 - **FileController**: Accepts input file from the user.
+   Behaviour:readFile(String filepath)
 - **ElectionController**: Processes election data to calculate winners and saves results.
+    Behaviour:getWinner()
 
 ### Outer Service
 
-- **FileRead**: Handles file-related operations and configurations.
-- **Parsing**: Parses and validates input data, then saves it into the repository.
-- **ResultCalculator**: Calculates winners and stores results using inner service.
+- **FileReaderService**: readfile(String filePath)
+- **ElectionService**: getWinner()
 
 ### Domain Model
 
-- **PartyFullName**: Represents the full name of parties, utilizing configuration files.
-  
-### Inner Service
+- **PartyNameMapper**:getPartyFullName(String partyCode)
 
-- **VoteCalculator**: Analyzes city-wise winners and stores results in the repository.
+
+### Inner Service
+- **ElectionResultAnalyser**: void analyseWinner()
+- **DataExtractor**:ExtractData(List<String>)
+- **VoteCalculator**: calculateVotes(Map<Map<Integer,String>>)
+- **ResultAnnouncer**:displayWinner()
+
+
 
 ### Repository
-
 - **ElectionDataRepository**: Stores raw election data in a structured format.
-- **ResultDataRepository**: Stores winners' data including city names, party full names, vote counts, and percentages.
+- **ElectionResultRepository**: Stores winners' data including city names, party full names, vote counts.
 
 ## Configuration Files
+1. **ValidCityName**: Contains configurations for city names.
+2. **ValidPartyCodes**: Contains configurations for party codes and their corresponding full names.
 
-1. **CityName**: Contains configurations for city names.
-2. **PartyCodes**: Contains configurations for party codes and their corresponding full names.
 
 ## Workflow
 
@@ -42,6 +45,9 @@ The task is to process election result data provided in a file format, analyze t
 3. **Winner Calculation**: The ResultCalculator service calculates winners for each city using the VoteCalculator.
 4. **Data Storage**: Election results, including winners' data, are stored in the ResultDataRepository.
 
-## Output
 
+
+## Output
 The output consists of city names along with the full names of parties and their respective vote counts.
+
+![img.png](img.png)
