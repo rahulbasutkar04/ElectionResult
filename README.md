@@ -34,7 +34,7 @@ We want to transform this into a standard result that shows:
 - shows the share of the vote as a percentage of all the votes cast
 - winning party i.e. party with maximum number of seats
 
-
+#Design Analysis
 ### Controller
 - **FileController**: Accepts input file from the user.
    Behaviour:readFile(String filepath)
