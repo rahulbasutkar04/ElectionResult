@@ -3,10 +3,13 @@ package com.amaap.electionresult.repository.impl.db.impl;
 import com.amaap.electionresult.repository.impl.db.ElectionDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryElectionFakeDatabase  implements ElectionDatabase {
     private final List<String> electionData = new ArrayList<>();
+
+   private final  HashMap<String, HashMap<String, Integer>> constituencyData=new HashMap<>();
 
     @Override
     public void insetIntoElectionDataTable(String data) {
@@ -19,8 +22,20 @@ public class InMemoryElectionFakeDatabase  implements ElectionDatabase {
         return electionData;
     }
 
-  public void clear()
+    @Override
+    public void insertIntoConstituencyResultData(HashMap<String, HashMap<String, Integer>> WinnerData) {
+        constituencyData.putAll(WinnerData);
+
+    }
+
+    @Override
+    public HashMap<String, HashMap<String, Integer>> getConstituencyData() {
+        return constituencyData;
+    }
+
+    public void clear()
     {
         electionData.clear();
+        constituencyData.clear();
     }
 }
