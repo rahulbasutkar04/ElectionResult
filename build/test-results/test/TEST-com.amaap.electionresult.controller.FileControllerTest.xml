@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.controller.FileControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-09T17:21:24" hostname="RAHULSLAPPY" time="0.102">
+<testsuite name="com.amaap.electionresult.controller.FileControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-05-10T07:10:37" hostname="RAHULSLAPPY" time="0.023">
   <properties/>
-  <testcase name="shouldBeAbleToRespondWithBadRequestMessageIfGivenFilePathIsNotProceeded()" classname="com.amaap.electionresult.controller.FileControllerTest" time="0.102"/>
+  <testcase name="shouldBeAbleToRespondWithOkMessageIfFileISTakenFromUser()" classname="com.amaap.electionresult.controller.FileControllerTest" time="0.016"/>
+  <testcase name="shouldBeAbleToRespondWithBadRequestMessageIfGivenFilePathIsNotProceeded()" classname="com.amaap.electionresult.controller.FileControllerTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

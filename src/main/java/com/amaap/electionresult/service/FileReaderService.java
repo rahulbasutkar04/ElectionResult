@@ -42,7 +42,7 @@ public class FileReaderService {
                             inMemoryElectionRepositoryData.inertIntoElectionData(line);
                         }
                     } catch (InvalidCityNameException | InvalidFormatException | InvalidPartyCodeException e) {
-                        throw e; // Rethrow the caught exception
+                        throw e;
                     }
                 }
             }
