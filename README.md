@@ -1,8 +1,38 @@
 # Election Result Processing
 
 ## Problem Description
+Election Results
 
-The task is to process election result data provided in a file format, analyze the results, and determine the winners for each city constituency. The input file contains data including the city name, party code, and the number of votes cast for each party.
+It's election night! Exciting! We have a feed of election results from a data supplier.
+They will supply us a file which will be updated throughout the night as results come in.
+
+A result will consist of:
+- A constituency
+- A repeating set of pairs with the party code and the votes cast
+
+So for example:
+
+Banglore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP
+Pune, 9389, CPI, 4829, BJP, 3375, NCP, 3371, BSP, 309, INC,
+
+Party Codes -
+
+BJP - Bhartiya Janta Party
+INC - Indian National Congress
+BSP - Bahujan Samaj Party
+CPI - Communist Party of India
+NCP - Nationalist Congress Party
+IND - Independant
+
+We want to transform this into a standard result that shows:
+
+- the constituency name
+- translates the party code into a full name
+- shows the winner of the constituency
+  Extensions -
+
+- shows the share of the vote as a percentage of all the votes cast
+- winning party i.e. party with maximum number of seats
 
 
 ### Controller
