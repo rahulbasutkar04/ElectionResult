@@ -7,6 +7,7 @@ import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
 import com.amaap.electionresult.service.ElectionService;
 import com.amaap.electionresult.service.FileReaderService;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,12 +34,12 @@ class ElectionResultAnalyserTest {
     }
 
     @Test
-    void shouldBeABleTOGetTheWinneOfConstituencyWhenListOfDataIsSent() {
+    void shouldBeABleTOGetTheWinneOfConstituencyWhenListOfDataIsSent() throws InvalidPartyCodeException {
         // arrange
         FileReaderService fileReaderService = new FileReaderService();
         FileController fileController = new FileController(fileReaderService);
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
-        fileController.getFile(path);
+        fileController.readFile(path);
 
         // act
         electionController.getWinner();

@@ -1,5 +1,6 @@
 package com.amaap.electionresult.domain;
 
+import com.amaap.electionresult.domain.service.VoteCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

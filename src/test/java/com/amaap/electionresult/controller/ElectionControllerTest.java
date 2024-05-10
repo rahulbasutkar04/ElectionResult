@@ -6,6 +6,7 @@ import com.amaap.electionresult.domain.service.ElectionResultAnalyser;
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
 import com.amaap.electionresult.service.ElectionService;
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +29,7 @@ public class ElectionControllerTest {
     }
 
     @Test
-    void shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner() {
+    void shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner() throws InvalidPartyCodeException {
         // arrange
         ElectionController electionController = new ElectionController(electionService);
         Response expected = new Response(Http.OK, Http.OK.getMessage());

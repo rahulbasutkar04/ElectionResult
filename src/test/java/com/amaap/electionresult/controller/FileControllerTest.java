@@ -29,7 +29,7 @@ public class FileControllerTest {
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
 
         // act
-        Response actual = fileController.getFile(path);
+        Response actual = fileController.readFile(path);
 
         // assert
         assertEquals(expected, actual);
@@ -43,7 +43,7 @@ public class FileControllerTest {
         String path = "D:\\ElectionResult\\src\\main\\resources\\invalidElectionData.txt";
 
         // act
-        Response actual = fileController.getFile(path);
+        Response actual = fileController.readFile(path);
 
         // assert
         assertEquals(expected, actual);

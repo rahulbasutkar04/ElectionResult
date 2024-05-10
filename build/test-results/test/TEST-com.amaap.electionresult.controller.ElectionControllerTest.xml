@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.controller.ElectionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T07:10:37" hostname="RAHULSLAPPY" time="0.099">
+<testsuite name="com.amaap.electionresult.controller.ElectionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:40" hostname="RAHULSLAPPY" time="0.271">
   <properties/>
-  <testcase name="shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner()" classname="com.amaap.electionresult.controller.ElectionControllerTest" time="0.099"/>
+  <testcase name="shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner()" classname="com.amaap.electionresult.controller.ElectionControllerTest" time="0.271"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

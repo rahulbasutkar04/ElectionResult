@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.service.io.ValidatorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2024-05-10T07:10:39" hostname="RAHULSLAPPY" time="0.099">
+<testsuite name="com.amaap.electionresult.service.io.ValidatorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:42" hostname="RAHULSLAPPY" time="0.057">
   <properties/>
-  <testcase name="ShouldReturnTrueIfLineFollwsTheStructuralPatternOfValidLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.004"/>
-  <testcase name="shouldBeAbleToCheckIfGivenLineHasValidPartyCodeOrNot()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.002"/>
+  <testcase name="ShouldReturnTrueIfLineFollwsTheStructuralPatternOfValidLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.0"/>
+  <testcase name="shouldBeAbleToCheckIfGivenLineHasValidPartyCodeOrNot()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.003"/>
   <testcase name="ShouldReturnFalseWhenMissingCommaAfterPartyCodeAndVotes()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
   <testcase name="ShouldReturnFalseWhenNoPartyCodeAndVotesPresentInLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
   <testcase name="shouldBeAbleToCheckValidPartyCodesWhichIsInTheConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
-  <testcase name="shouldReturnFalseWhenNegativeVotesArePresentInTheLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.002"/>
+  <testcase name="shouldReturnFalseWhenNegativeVotesArePresentInTheLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
   <testcase name="shouldBeAbleToReturnFalseIfLineDonNotHavePartyCodeAsItsPlace()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
   <testcase name="shouldBeAbleToReturnFalseIfLineHasInValidCityNameWhichIsNotInConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.002"/>
-  <testcase name="shouldBeAbleToReturnTrueIfLineHasAnotherValidCityNamesFromTheConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.004"/>
-  <testcase name="shouldBeAbleToReturnTrueIfLineHasValidCityNamesFromTheConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.005"/>
-  <testcase name="shouldBeAbleToReturnTrueForValidInputLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.002"/>
-  <testcase name="shouldBeAbleToTestLoadValidCityNames()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.02"/>
+  <testcase name="shouldBeAbleToReturnTrueIfLineHasAnotherValidCityNamesFromTheConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.002"/>
+  <testcase name="shouldBeAbleToReturnTrueIfLineHasValidCityNamesFromTheConfigurationFile()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
+  <testcase name="shouldBeAbleToReturnTrueForValidInputLine()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.001"/>
+  <testcase name="shouldBeAbleToTestLoadValidCityNames()" classname="com.amaap.electionresult.service.io.ValidatorTest" time="0.003"/>
   <system-out><![CDATA[Banglore
 Pune
 Mumbai

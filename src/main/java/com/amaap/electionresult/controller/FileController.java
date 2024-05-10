@@ -11,7 +11,7 @@ public class FileController {
         this.fileReaderService = fileReaderService;
     }
 
-    public Response getFile(String path) {
+    public Response readFile(String path) {
 
         try {
             if (fileReaderService.readFile(path)) return new Response(Http.OK, Http.OK.getMessage());

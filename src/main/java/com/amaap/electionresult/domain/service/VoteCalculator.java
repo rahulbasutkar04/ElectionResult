@@ -1,4 +1,4 @@
-package com.amaap.electionresult.domain;
+package com.amaap.electionresult.domain.service;
 
 import java.util.HashMap;
 import java.util.Map;

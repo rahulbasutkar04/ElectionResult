@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.service.io.FileParserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-05-10T07:10:39" hostname="RAHULSLAPPY" time="0.094">
+<testsuite name="com.amaap.electionresult.service.io.FileParserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-05-10T09:07:42" hostname="RAHULSLAPPY" time="0.061">
   <properties/>
-  <testcase name="shouldThrowExceptionIfInvalidFormatInputLine()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.007"/>
-  <testcase name="shouldBeAbleToTestValidCityName()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.007"/>
-  <testcase name="shouldThrowExceptionIfLineContainsInvalidFormatCityNameNoComma()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.004"/>
-  <testcase name="shouldThrowExceptionIfLineContainsSpecialCharacters()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.004"/>
-  <testcase name="shouldThrowExceptionIfLineContainsInvalidCityNameExtraSpaces()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.004"/>
+  <testcase name="shouldThrowExceptionIfInvalidFormatInputLine()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.002"/>
+  <testcase name="shouldBeAbleToTestValidCityName()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.002"/>
+  <testcase name="shouldThrowExceptionIfLineContainsInvalidFormatCityNameNoComma()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.006"/>
+  <testcase name="shouldThrowExceptionIfLineContainsSpecialCharacters()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.002"/>
+  <testcase name="shouldThrowExceptionIfLineContainsInvalidCityNameExtraSpaces()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.003"/>
   <testcase name="shouldThrowExceptionIfLineContainsInvalidCityName()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.005"/>
   <testcase name="shouldBeAbleToTestValidInputLine()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.002"/>
   <testcase name="shouldBeAbleToReturnTrueIfLineContainsTheValidPartCode()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.002"/>
-  <testcase name="shouldThrowExceptionIfLineDonNotHavePartyCodeAsItsPlace()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.005"/>
-  <testcase name="shouldThrowExceptionIfLineContainsInvalidCityNameMixedCase()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.022"/>
+  <testcase name="shouldThrowExceptionIfLineDonNotHavePartyCodeAsItsPlace()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.019"/>
+  <testcase name="shouldThrowExceptionIfLineContainsInvalidCityNameMixedCase()" classname="com.amaap.electionresult.service.io.FileParserTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

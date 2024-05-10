@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class ResultAnnouncer {
     PartyNameMapper partyNameMapper = new PartyNameMapper();
-
     public void displayWinner() throws InvalidPartyCodeException {
         InMemoryElectionResultRepository inMemoryElectionResultRepository = InMemoryElectionResultRepository.getInstance();
         HashMap<String, HashMap<String, Integer>> winnerData = inMemoryElectionResultRepository.getWinnerData();
@@ -22,6 +21,7 @@ public class ResultAnnouncer {
                 int votes = partyEntry.getValue();
                 String partyName = partyNameMapper.getPartyFullName(partyCode);
                 System.out.println("The Winner From " + city + " is" + ": " + partyName + " (" + partyCode + ") - with votes count is: " + votes);
+
             }
         }
     }

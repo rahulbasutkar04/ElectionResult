@@ -14,7 +14,7 @@ class DataExtractorTest {
     public void shouldBeAbleToTestExtractData() {
 
         // arrange
-        DataExtractor dataExtractor = new DataExtractor();
+        DataExtractor dataExtractor = DataExtractor.getInstance();
         String input = "Banglore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP;" +
                 "Pune, 9389, CPI, 4829, BJP, 3375, NCP, 3371, BSP, 309";
         HashMap<String, HashMap<String, Integer>> expectedOutput = new HashMap<>();

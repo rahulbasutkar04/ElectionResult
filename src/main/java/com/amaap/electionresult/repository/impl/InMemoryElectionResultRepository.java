@@ -30,6 +30,7 @@ public class InMemoryElectionResultRepository implements electionResultRepositor
     public HashMap<String, HashMap<String, Integer>> getWinnerData() {
         return electionDatabase.getConstituencyData();
     }
+
     public void clear() {
         electionDatabase.clear();
     }

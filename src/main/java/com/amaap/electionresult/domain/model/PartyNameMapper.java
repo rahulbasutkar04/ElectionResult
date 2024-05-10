@@ -1,5 +1,6 @@
 package com.amaap.electionresult.domain.model;
 
+import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
@@ -25,11 +26,11 @@ public class PartyNameMapper {
         }
     }
 
-    public String getPartyFullName(String partyCode) {
+    public String getPartyFullName(String partyCode) throws InvalidPartyCodeException {
         if (parties.containsKey(partyCode)) {
             return parties.get(partyCode);
         } else {
-            return "Unknown Party Code Exception";
+            throw new InvalidPartyCodeException("Invalid Party Code Found..");
         }
     }
 }

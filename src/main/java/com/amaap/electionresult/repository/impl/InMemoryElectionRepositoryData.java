@@ -10,6 +10,7 @@ public class InMemoryElectionRepositoryData implements electionDataRepository {
     private static InMemoryElectionRepositoryData instance;
     ElectionDatabase electionDatabase = new InMemoryElectionFakeDatabase();
 
+
     private InMemoryElectionRepositoryData() {
     }
 

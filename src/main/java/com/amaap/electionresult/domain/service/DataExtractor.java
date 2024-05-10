@@ -4,10 +4,21 @@ import java.util.HashMap;
 
 public class DataExtractor {
 
-    public  HashMap<String, HashMap<String, Integer>> ExtractData(String input) {
+    private static DataExtractor instance;
+    private DataExtractor() {}
+
+    public static DataExtractor getInstance() {
+        if (instance == null) {
+            instance = new DataExtractor();
+        }
+        return instance;
+    }
+
+    public HashMap<String, HashMap<String, Integer>> ExtractData(String input) {
         HashMap<String, HashMap<String, Integer>> resultMap = new HashMap<>();
 
         String[] cities = input.split(";");
+
         for (String cityData : cities) {
             String[] parts = cityData.split(", ");
             String city = parts[0];
