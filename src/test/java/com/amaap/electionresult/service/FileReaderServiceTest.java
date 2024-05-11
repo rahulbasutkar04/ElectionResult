@@ -1,10 +1,8 @@
 package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
-import com.amaap.electionresult.service.exception.InvalidCityNameException;
+import com.amaap.electionresult.service.exception.ElectionResultException;
 import com.amaap.electionresult.service.exception.InvalidFilePathException;
-import com.amaap.electionresult.service.exception.InvalidFormatException;
-import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +22,7 @@ class FileReaderServiceTest {
         inMemoryElectionRepositoryData.clear();
     }
     @Test
-    void shouldBeAbleToReadTheDataInFile() throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
+    void shouldBeAbleToReadTheDataInFile() throws ElectionResultException, IOException {
         // arrange
         FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
@@ -74,7 +72,7 @@ class FileReaderServiceTest {
     }
 
     @Test
-    void shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile() throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
+    void shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile() throws ElectionResultException, IOException {
         // arrange
         FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";

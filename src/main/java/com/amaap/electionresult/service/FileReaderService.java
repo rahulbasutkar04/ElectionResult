@@ -1,10 +1,7 @@
 package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
-import com.amaap.electionresult.service.exception.InvalidCityNameException;
-import com.amaap.electionresult.service.exception.InvalidFilePathException;
-import com.amaap.electionresult.service.exception.InvalidFormatException;
-import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
+import com.amaap.electionresult.service.exception.*;
 import com.amaap.electionresult.service.io.FileParser;
 
 import java.io.*;
@@ -14,13 +11,9 @@ public class FileReaderService {
     FileParser fileParser = new FileParser();
 
 
-    public boolean readFile(String path) throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
+    public boolean readFile(String path) throws ElectionResultException, IOException {
 
         File file = new File(path);
-
-        if (path == null) {
-            throw new NullPointerException("File path cannot be null");
-        }
 
         if (path.isEmpty()) {
             throw new InvalidFilePathException("File path cannot be empty");

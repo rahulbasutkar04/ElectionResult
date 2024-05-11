@@ -1,10 +1,12 @@
 package com.amaap.electionresult.domain.model;
 
+import com.amaap.electionresult.service.exception.ElectionResultException;
 import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PartyNameMapperTest {
 
@@ -16,7 +18,7 @@ class PartyNameMapperTest {
     }
 
     @Test
-    void shouldBeAbleToGetTheCorrectPartyFullName() throws InvalidPartyCodeException {
+    void shouldBeAbleToGetTheCorrectPartyFullName() throws ElectionResultException {
         // arrange
         String partyCode = "BJP";
         String expectedFullName = "Bhartiya Janta Party";
@@ -29,7 +31,7 @@ class PartyNameMapperTest {
     }
 
     @Test
-    void  shouldThrowExceptionIfInvalidPartyCodeIsGiven() {
+    void shouldThrowExceptionIfInvalidPartyCodeIsGiven() {
         // assert
         String invalidPartyCode = "XYZ";
 
@@ -38,5 +40,6 @@ class PartyNameMapperTest {
             partyNameMapper.getPartyFullName(invalidPartyCode);
         });
     }
+
 
 }

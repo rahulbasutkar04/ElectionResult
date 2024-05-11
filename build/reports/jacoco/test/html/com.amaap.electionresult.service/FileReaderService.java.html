@@ -1,53 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileReaderService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ElectionResult</a> &gt; <a href="index.source.html" class="el_package">com.amaap.electionresult.service</a> &gt; <span class="el_source">FileReaderService.java</span></div><h1>FileReaderService.java</h1><pre class="source lang-java linenums">package com.amaap.electionresult.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
-import com.amaap.electionresult.service.exception.InvalidCityNameException;
-import com.amaap.electionresult.service.exception.InvalidFilePathException;
-import com.amaap.electionresult.service.exception.InvalidFormatException;
-import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
+import com.amaap.electionresult.service.exception.*;
 import com.amaap.electionresult.service.io.FileParser;
 
 import java.io.*;
 
-<span class="fc" id="L12">public class FileReaderService {</span>
-<span class="fc" id="L13">    private final InMemoryElectionRepositoryData inMemoryElectionRepositoryData = InMemoryElectionRepositoryData.getInstance();</span>
-<span class="fc" id="L14">    FileParser fileParser = new FileParser();</span>
+<span class="fc" id="L9">public class FileReaderService {</span>
+<span class="fc" id="L10">    private final InMemoryElectionRepositoryData inMemoryElectionRepositoryData = InMemoryElectionRepositoryData.getInstance();</span>
+<span class="fc" id="L11">    FileParser fileParser = new FileParser();</span>
 
 
-    public boolean readFile(String path) throws InvalidFilePathException, IOException, InvalidFormatException, InvalidPartyCodeException, InvalidCityNameException {
+    public boolean readFile(String path) throws ElectionResultException, IOException {
 
-<span class="fc" id="L19">        File file = new File(path);</span>
+<span class="fc" id="L16">        File file = new File(path);</span>
 
-<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if (path == null) {</span>
-<span class="nc" id="L22">            throw new NullPointerException(&quot;File path cannot be null&quot;);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (path.isEmpty()) {</span>
+<span class="fc" id="L19">            throw new InvalidFilePathException(&quot;File path cannot be empty&quot;);</span>
         }
 
-<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (path.isEmpty()) {</span>
-<span class="fc" id="L26">            throw new InvalidFilePathException(&quot;File path cannot be empty&quot;);</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (!file.exists()) {</span>
+<span class="fc" id="L23">            throw new FileNotFoundException(&quot;File not found at the specified path: &quot; + path);</span>
         }
 
-<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (!file.exists()) {</span>
-<span class="fc" id="L30">            throw new FileNotFoundException(&quot;File not found at the specified path: &quot; + path);</span>
-        }
-
-<span class="fc" id="L33">        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {</span>
+<span class="fc" id="L26">        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {</span>
             String line;
-<span class="fc bfc" id="L35" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
-<span class="fc" id="L36">                line = line.trim();</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (!line.isEmpty()) {</span>
-<span class="fc" id="L38">                    String[] tokens = line.split(&quot;\\s*,\\s*&quot;);</span>
-<span class="fc" id="L39">                    line = String.join(&quot;, &quot;, tokens);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L29">                line = line.trim();</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">                if (!line.isEmpty()) {</span>
+<span class="fc" id="L31">                    String[] tokens = line.split(&quot;\\s*,\\s*&quot;);</span>
+<span class="fc" id="L32">                    line = String.join(&quot;, &quot;, tokens);</span>
                     try {
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                        if (fileParser.parser(line)) {</span>
-<span class="fc" id="L42">                            inMemoryElectionRepositoryData.inertIntoElectionData(line);</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">                        if (fileParser.parser(line)) {</span>
+<span class="fc" id="L35">                            inMemoryElectionRepositoryData.inertIntoElectionData(line);</span>
                         }
-<span class="fc" id="L44">                    } catch (InvalidCityNameException | InvalidFormatException | InvalidPartyCodeException e) {</span>
-<span class="fc" id="L45">                        throw e;</span>
-<span class="fc" id="L46">                    }</span>
-<span class="fc" id="L47">                }</span>
+<span class="fc" id="L37">                    } catch (InvalidCityNameException | InvalidFormatException | InvalidPartyCodeException e) {</span>
+<span class="fc" id="L38">                        throw e;</span>
+<span class="fc" id="L39">                    }</span>
+<span class="fc" id="L40">                }</span>
             }
 
-<span class="fc" id="L50">            return true;</span>
+<span class="fc" id="L43">            return true;</span>
         }
     }
 

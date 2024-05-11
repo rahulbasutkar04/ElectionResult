@@ -7,7 +7,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest {
-    Validator validator=new Validator();
+    Validator validator = new Validator();
 
     @Test
     void shouldBeAbleToReturnTrueForValidInputLine() {
@@ -40,17 +40,17 @@ class ValidatorTest {
     }
 
     @Test
-    void shouldBeAbleToReturnTrueIfLineHasValidCityNamesFromTheConfigurationFile(){
+    void shouldBeAbleToReturnTrueIfLineHasValidCityNamesFromTheConfigurationFile() {
         assertTrue(validator.hasValidCityNames("Banglore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
     }
 
     @Test
-    void shouldBeAbleToReturnTrueIfLineHasAnotherValidCityNamesFromTheConfigurationFile()  {
+    void shouldBeAbleToReturnTrueIfLineHasAnotherValidCityNamesFromTheConfigurationFile() {
         assertTrue(validator.hasValidCityNames("Mumbai, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
     }
 
     @Test
-    void shouldBeAbleToReturnFalseIfLineHasInValidCityNameWhichIsNotInConfigurationFile()  {
+    void shouldBeAbleToReturnFalseIfLineHasInValidCityNameWhichIsNotInConfigurationFile() {
         assertFalse(validator.hasValidCityNames("Solapur, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP"));
     }
 
@@ -92,8 +92,9 @@ class ValidatorTest {
         // assert
         assertFalse(result);
     }
+
     @Test
-    void  shouldBeAbleToReturnFalseIfLineDonNotHavePartyCodeAsItsPlace() {
+    void shouldBeAbleToReturnFalseIfLineDonNotHavePartyCodeAsItsPlace() {
         // arrange
         String line = "Bangalore, 11014, BJP, 17803, , 4923, CPI, 2069, NCP";
 
@@ -104,6 +105,16 @@ class ValidatorTest {
         assertFalse(result);
     }
 
+    @Test
+    void shouldBeAbleToHandleIOExceptionWhenLoadingValidCityNames() {
+        assertThrows(NullPointerException.class, () -> {
+            validator.loadValidCityNames(null);
+        });
 
+        assertThrows(NullPointerException.class, () -> {
+            validator.loadValidPartyCodes(null);
+        });
+
+    }
 
 }

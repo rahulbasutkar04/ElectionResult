@@ -15,7 +15,7 @@ public class PartyNameMapper {
         loadPartyCodesAndNames();
     }
 
-    private void loadPartyCodesAndNames() {
+    public void loadPartyCodesAndNames() {
         String yamlFilePath = "D:\\ElectionResult\\src\\main\\resources\\validPartyCodes.yaml";
         try (InputStream inputStream = Files.newInputStream(Paths.get(yamlFilePath))) {
             Yaml yaml = new Yaml();

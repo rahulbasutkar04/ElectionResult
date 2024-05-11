@@ -12,11 +12,11 @@ public class Response  {
 <span class="fc" id="L12">    }</span>
 
     public Http getStatus() {
-<span class="nc" id="L15">        return status;</span>
+<span class="fc" id="L15">        return status;</span>
     }
 
     public String getMessage() {
-<span class="nc" id="L19">        return message;</span>
+<span class="fc" id="L19">        return message;</span>
     }
 
     @Override
@@ -24,24 +24,14 @@ public class Response  {
 <span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (this == obj) return true;</span>
 <span class="pc bpc" id="L25" title="2 of 4 branches missed.">        if (obj == null || getClass() != obj.getClass()) return false;</span>
 <span class="fc" id="L26">        Response response = (Response) obj;</span>
-<span class="pc bpc" id="L27" title="2 of 4 branches missed.">        return status == response.status &amp;&amp; message.equals(response.message);</span>
+<span class="pc bpc" id="L27" title="1 of 4 branches missed.">        return status == response.status &amp;&amp; message.equals(response.message);</span>
     }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L32">        return Objects.hash(status, message);</span>
+<span class="fc" id="L32">        return Objects.hash(status, message);</span>
     }
 }
 
 
-// should check if the path contains the file or not
-// shoudl check if file has data or not
-// should check if it contains extra spaces
-
-// structural validations are done here
-// then it then if extra space forun it it romoves that spces(trim) and then paesses easch line of data to the parser
-// parser does the data validation such as if it contains the format like city name ,party code ,and number which is vote
-// after doing that it will check whethee the name of city is presnt in cnfiguration also check party code preent in configuration file and also check if the vote count is not negative..
-// then after parsing if data is right it will store into repository for further process..
-//then it will retun true only if parser returns true other wose false..if parser retrunr true that means all data is right and added to repostiryu
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -62,7 +62,7 @@ public class Validator {
     }
 
 
-    private Set<String> loadValidPartyCodes(String filePath) {
+    public Set<String> loadValidPartyCodes(String filePath) {
         Set<String> partyCodes = new HashSet<>();
         try (InputStream inputStream = getClass().getResourceAsStream(filePath);
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {

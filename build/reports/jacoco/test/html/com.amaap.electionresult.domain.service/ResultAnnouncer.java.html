@@ -2,29 +2,30 @@
 
 import com.amaap.electionresult.domain.model.PartyNameMapper;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
+import com.amaap.electionresult.service.exception.ElectionResultException;
 import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="fc" id="L10">public class ResultAnnouncer {</span>
-<span class="fc" id="L11">    PartyNameMapper partyNameMapper = new PartyNameMapper();</span>
+<span class="fc" id="L11">public class ResultAnnouncer {</span>
+<span class="fc" id="L12">    PartyNameMapper partyNameMapper = new PartyNameMapper();</span>
 
-    public void displayWinner() throws InvalidPartyCodeException {
-<span class="fc" id="L14">        InMemoryElectionResultRepository inMemoryElectionResultRepository = InMemoryElectionResultRepository.getInstance();</span>
-<span class="fc" id="L15">        HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt; winnerData = inMemoryElectionResultRepository.getWinnerData();</span>
+    public void displayWinner() throws ElectionResultException {
+<span class="fc" id="L15">        InMemoryElectionResultRepository inMemoryElectionResultRepository = InMemoryElectionResultRepository.getInstance();</span>
+<span class="fc" id="L16">        HashMap&lt;String, HashMap&lt;String, Integer&gt;&gt; winnerData = inMemoryElectionResultRepository.getWinnerData();</span>
 
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (Map.Entry&lt;String, HashMap&lt;String, Integer&gt;&gt; entry : winnerData.entrySet()) {</span>
-<span class="fc" id="L18">            String city = entry.getKey();</span>
-<span class="fc" id="L19">            HashMap&lt;String, Integer&gt; partyVotes = entry.getValue();</span>
-<span class="fc bfc" id="L20" title="All 2 branches covered.">            for (Map.Entry&lt;String, Integer&gt; partyEntry : partyVotes.entrySet()) {</span>
-<span class="fc" id="L21">                String partyCode = partyEntry.getKey();</span>
-<span class="fc" id="L22">                int votes = partyEntry.getValue();</span>
-<span class="fc" id="L23">                String partyName = partyNameMapper.getPartyFullName(partyCode);</span>
-<span class="fc" id="L24">                System.out.println(&quot;The Winner From &quot; + city + &quot; is&quot; + &quot;: &quot; + partyName + &quot; (&quot; + partyCode + &quot;) - with votes count is: &quot; + votes);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (Map.Entry&lt;String, HashMap&lt;String, Integer&gt;&gt; entry : winnerData.entrySet()) {</span>
+<span class="fc" id="L19">            String city = entry.getKey();</span>
+<span class="fc" id="L20">            HashMap&lt;String, Integer&gt; partyVotes = entry.getValue();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            for (Map.Entry&lt;String, Integer&gt; partyEntry : partyVotes.entrySet()) {</span>
+<span class="fc" id="L22">                String partyCode = partyEntry.getKey();</span>
+<span class="fc" id="L23">                int votes = partyEntry.getValue();</span>
+<span class="fc" id="L24">                String partyName = partyNameMapper.getPartyFullName(partyCode);</span>
+<span class="fc" id="L25">                System.out.println(&quot;The Winner From &quot; + city + &quot; is&quot; + &quot;: &quot; + partyName + &quot; (&quot; + partyCode + &quot;) - with votes count is: &quot; + votes);</span>
 
-<span class="fc" id="L26">            }</span>
-<span class="fc" id="L27">        }</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L27">            }</span>
+<span class="fc" id="L28">        }</span>
+<span class="fc" id="L29">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

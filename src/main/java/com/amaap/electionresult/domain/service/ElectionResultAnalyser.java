@@ -2,7 +2,7 @@ package com.amaap.electionresult.domain.service;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
-import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
+import com.amaap.electionresult.service.exception.ElectionResultException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ElectionResultAnalyser {
     }
 
 
-    public boolean analyseWinner() throws InvalidPartyCodeException {
+    public boolean analyseWinner() throws ElectionResultException {
         List<String> data = inMemoryElectionRepositoryData.getElectionData();
         for (int i = 0; i < data.size(); i++) {
             String line = data.get(i);

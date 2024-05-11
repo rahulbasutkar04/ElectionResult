@@ -62,7 +62,7 @@ public class Validator {
     }
 
 
-    private Set&lt;String&gt; loadValidPartyCodes(String filePath) {
+    public Set&lt;String&gt; loadValidPartyCodes(String filePath) {
 <span class="fc" id="L66">        Set&lt;String&gt; partyCodes = new HashSet&lt;&gt;();</span>
 <span class="fc" id="L67">        try (InputStream inputStream = getClass().getResourceAsStream(filePath);</span>
 <span class="fc" id="L68">             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {</span>
