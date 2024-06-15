@@ -2,16 +2,16 @@ package com.amaap.electionresult.controller.dto;
 
 import java.util.Objects;
 
-public class Response  {
-    private final Http status;
+public class Response {
+    private final HttpStatus status;
     private final String message;
 
-    public Response(Http status, String message) {
+    public Response(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public Http getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
 

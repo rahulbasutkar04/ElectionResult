@@ -6,12 +6,10 @@ import com.amaap.electionresult.domain.service.ElectionResultAnalyser;
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
 import com.amaap.electionresult.service.ElectionService;
-import com.amaap.electionresult.service.FileReaderService;
 import com.amaap.electionresult.service.exception.ElectionResultException;
+import com.amaap.electionresult.service.io.FileReaderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -36,7 +34,7 @@ class ElectionResultAnalyserTest {
     }
 
     @Test
-    void shouldBeABleTOGetTheWinneOfConstituencyWhenListOfDataIsSent() throws ElectionResultException, IOException {
+    void shouldBeABleTOGetTheWinneOfConstituencyWhenListOfDataIsSent() throws ElectionResultException {
         // arrange
         FileReaderService fileReaderService = new FileReaderService();
         FileController fileController = new FileController(fileReaderService);
@@ -48,7 +46,6 @@ class ElectionResultAnalyserTest {
         boolean hasData = inMemoryElectionResultRepository.getWinnerData().size() != 0;
 
         // assert
-
         assertTrue(hasData);
     }
 

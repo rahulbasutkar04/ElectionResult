@@ -1,4 +1,4 @@
-package com.amaap.electionresult.service;
+package com.amaap.electionresult.service.io;
 
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.service.exception.*;

@@ -2,12 +2,12 @@ package com.amaap.electionresult;
 
 import com.amaap.electionresult.controller.ElectionController;
 import com.amaap.electionresult.controller.FileController;
-import com.amaap.electionresult.repository.electionDataRepository;
-import com.amaap.electionresult.repository.electionResultRepository;
+import com.amaap.electionresult.repository.ElectionDataRepository;
+import com.amaap.electionresult.repository.ElectionResultRepository;
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
 import com.amaap.electionresult.service.ElectionService;
-import com.amaap.electionresult.service.FileReaderService;
+import com.amaap.electionresult.service.io.FileReaderService;
 import com.amaap.electionresult.domain.service.ElectionResultAnalyser;
 
 public class AppConfig {
@@ -15,11 +15,11 @@ public class AppConfig {
         return new FileReaderService();
     }
 
-    public electionDataRepository electionDataRepository() {
+    public ElectionDataRepository electionDataRepository() {
         return  InMemoryElectionRepositoryData.getInstance();
     }
 
-    public electionResultRepository electionResultRepository() {
+    public ElectionResultRepository electionResultRepository() {
         return  InMemoryElectionResultRepository.getInstance();
     }
 

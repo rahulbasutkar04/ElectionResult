@@ -1,14 +1,14 @@
 package com.amaap.electionresult.repository.impl;
 
-import com.amaap.electionresult.repository.electionDataRepository;
-import com.amaap.electionresult.repository.impl.db.ElectionDatabase;
-import com.amaap.electionresult.repository.impl.db.impl.InMemoryElectionFakeDatabase;
+import com.amaap.electionresult.repository.ElectionDataRepository;
+import com.amaap.electionresult.repository.impl.db.Database;
+import com.amaap.electionresult.repository.impl.db.impl.FakeDatabase;
 
 import java.util.List;
 
-public class InMemoryElectionRepositoryData implements electionDataRepository {
+public class InMemoryElectionRepositoryData implements ElectionDataRepository {
     private static InMemoryElectionRepositoryData instance;
-    ElectionDatabase electionDatabase = new InMemoryElectionFakeDatabase();
+    Database database = new FakeDatabase();
 
 
     private InMemoryElectionRepositoryData() {
@@ -23,15 +23,15 @@ public class InMemoryElectionRepositoryData implements electionDataRepository {
 
     @Override
     public void inertIntoElectionData(String data) {
-        electionDatabase.insetIntoElectionDataTable(data);
+        database.insetIntoElectionDataTable(data);
     }
 
     @Override
     public List<String> getElectionData() {
-        return electionDatabase.getFromElectionDataTable();
+        return database.getFromElectionDataTable();
     }
 
     public void clear() {
-        electionDatabase.clear();
+        database.clear();
     }
 }

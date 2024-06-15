@@ -3,7 +3,7 @@ package com.amaap.electionresult.repository;
 
 import java.util.List;
 
-public interface electionDataRepository {
+public interface ElectionDataRepository {
 
    void  inertIntoElectionData(String list);
 

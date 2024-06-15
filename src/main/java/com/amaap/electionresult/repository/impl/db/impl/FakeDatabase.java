@@ -1,12 +1,12 @@
 package com.amaap.electionresult.repository.impl.db.impl;
 
-import com.amaap.electionresult.repository.impl.db.ElectionDatabase;
+import com.amaap.electionresult.repository.impl.db.Database;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class InMemoryElectionFakeDatabase  implements ElectionDatabase {
+public class FakeDatabase implements Database {
     private final List<String> electionData = new ArrayList<>();
 
    private final  HashMap<String, HashMap<String, Integer>> constituencyData=new HashMap<>();

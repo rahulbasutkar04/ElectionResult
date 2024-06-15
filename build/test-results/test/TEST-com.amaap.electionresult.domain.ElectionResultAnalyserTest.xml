@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.domain.ElectionResultAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-05-11T08:23:54" hostname="RAHULSLAPPY" time="0.034">
-  <properties/>
-  <testcase name="shouldBeABleTOGetTheWinneOfConstituencyWhenListOfDataIsSent()" classname="com.amaap.electionresult.domain.ElectionResultAnalyserTest" time="0.034"/>
-  <system-out><![CDATA[The Winner From Pune is: Communist Party Of India (CPI) - with votes count is: 9389
-The Winner From Banglore is: Indian National Congress (INC) - with votes count is: 17803
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

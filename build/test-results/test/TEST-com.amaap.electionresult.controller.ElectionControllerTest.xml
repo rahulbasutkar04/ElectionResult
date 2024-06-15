@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.amaap.electionresult.controller.ElectionControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-05-11T08:23:51" hostname="RAHULSLAPPY" time="2.459">
+<testsuite name="com.amaap.electionresult.controller.ElectionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-15T13:00:48" hostname="RAHULSLAPPY" time="0.47">
   <properties/>
-  <testcase name="shouldBeAbleToRespondWithBadRequestIfElectionServiceReturnsFalse()" classname="com.amaap.electionresult.controller.ElectionControllerTest" time="2.451"/>
-  <testcase name="shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner()" classname="com.amaap.electionresult.controller.ElectionControllerTest" time="0.006"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="shouldBeAbleToRespondWithOkIFElectionDataIsProceededForGettingWinner()" classname="com.amaap.electionresult.controller.ElectionControllerTest" time="0.47"/>
+  <system-out><![CDATA[The Winner From Pune is: Communist Party Of India (CPI) - with votes count is: 9389
+The Winner From Banglore is: Indian National Congress (INC) - with votes count is: 17803
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

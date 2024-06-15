@@ -32,7 +32,7 @@ class PartyNameMapperTest {
 
     @Test
     void shouldThrowExceptionIfInvalidPartyCodeIsGiven() {
-        // assert
+        // arrange
         String invalidPartyCode = "XYZ";
 
         // act & assert

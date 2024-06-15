@@ -3,6 +3,7 @@ package com.amaap.electionresult.service;
 import com.amaap.electionresult.repository.impl.InMemoryElectionRepositoryData;
 import com.amaap.electionresult.service.exception.ElectionResultException;
 import com.amaap.electionresult.service.exception.InvalidFilePathException;
+import com.amaap.electionresult.service.io.FileReaderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,17 +15,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileReaderServiceTest {
 
-    InMemoryElectionRepositoryData inMemoryElectionRepositoryData;
+    private InMemoryElectionRepositoryData inMemoryElectionRepositoryData;
+    private FileReaderService fileReaderService;
+
     @BeforeEach
-    void setup()
-    {
-        inMemoryElectionRepositoryData=InMemoryElectionRepositoryData.getInstance();
+    void setup() {
+        inMemoryElectionRepositoryData = InMemoryElectionRepositoryData.getInstance();
+        fileReaderService = new FileReaderService();
         inMemoryElectionRepositoryData.clear();
     }
+
     @Test
     void shouldBeAbleToReadTheDataInFile() throws ElectionResultException, IOException {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
 
         // act
@@ -37,7 +40,6 @@ class FileReaderServiceTest {
     @Test
     void shouldThrowExceptionIfGivenPathISNull() {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = null;
 
         // act & assert
@@ -50,7 +52,6 @@ class FileReaderServiceTest {
     @Test
     void shouldThrowExceptionIfGivenPathISEmpty() {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = "";
 
         // act & assert
@@ -62,7 +63,6 @@ class FileReaderServiceTest {
     @Test
     void shouldThrowExceptionIfPathDoesNotHaveTheFile() {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\doestntexiest.txt";
 
         // act & assert
@@ -74,26 +74,23 @@ class FileReaderServiceTest {
     @Test
     void shouldBeAbleTOGetTheAddedDataFromTheRepositoryFromFile() throws ElectionResultException, IOException {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\electiondata.text";
 
         // act
         fileReaderService.readFile(path);
-        List<String> actual=inMemoryElectionRepositoryData.getElectionData();
+        List<String> actual = inMemoryElectionRepositoryData.getElectionData();
 
         // assert
-        assertEquals(2,actual.size());
+        assertEquals(2, actual.size());
     }
 
     @Test
-    void shouldThrowExceptionIfFileHasInvalidDataFound()
-    {
+    void shouldThrowExceptionIfFileHasInvalidDataFound() {
         // arrange
-        FileReaderService fileReaderService = new FileReaderService();
         String path = "D:\\ElectionResult\\src\\main\\resources\\invalidElectionData.txt";
 
         // act & assert
-         assertThrows(Exception.class, () -> {
+        assertThrows(Exception.class, () -> {
             fileReaderService.readFile(path);
         });
 

@@ -3,7 +3,7 @@ package com.amaap.electionresult.repository.impl.db;
 import java.util.HashMap;
 import java.util.List;
 
-public interface ElectionDatabase {
+public interface Database {
     void insetIntoElectionDataTable(String data);
     
     List<String> getFromElectionDataTable();

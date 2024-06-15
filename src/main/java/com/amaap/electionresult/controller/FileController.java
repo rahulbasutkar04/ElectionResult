@@ -1,11 +1,8 @@
 package com.amaap.electionresult.controller;
 
-import com.amaap.electionresult.controller.dto.Http;
+import com.amaap.electionresult.controller.dto.HttpStatus;
 import com.amaap.electionresult.controller.dto.Response;
-import com.amaap.electionresult.service.FileReaderService;
-import com.amaap.electionresult.service.exception.*;
-
-import java.io.IOException;
+import com.amaap.electionresult.service.io.FileReaderService;
 
 public class FileController {
     FileReaderService fileReaderService;
@@ -18,13 +15,13 @@ public class FileController {
 
 
         try {
-            if (fileReaderService.readFile(path)) return new Response(Http.OK, Http.OK.getMessage());
+            if (fileReaderService.readFile(path)) return new Response(HttpStatus.OK, HttpStatus.OK.getMessage());
 
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-        return new Response(Http.BAD_REQUEST, Http.BAD_REQUEST.getMessage());
+        return new Response(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getMessage());
 
     }
 }

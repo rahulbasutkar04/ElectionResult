@@ -9,7 +9,7 @@ class ResponseTest {
     @Test
     void shouldBeAbleToTestConstructor() {
         // arrange
-        Http status = Http.OK;
+        HttpStatus status = HttpStatus.OK;
         String message = "File Uploaded Successfully..";
 
         // act
@@ -23,7 +23,7 @@ class ResponseTest {
     @Test
     void testGetStatus() {
         // arrange
-        Http status = Http.BAD_REQUEST;
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         String message = "File Cannot Be Uploaded..";
         Response response = new Response(status, message);
 
@@ -34,7 +34,7 @@ class ResponseTest {
     @Test
     void testGetMessage() {
         // arrange
-        Http status = Http.BAD_REQUEST;
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         String message = "File Cannot Be Uploaded..";
         Response response = new Response(status, message);
 
@@ -45,9 +45,9 @@ class ResponseTest {
     @Test
     void testEquals() {
         // arrange
-        Response response1 = new Response(Http.OK, "File Uploaded Successfully..");
-        Response response2 = new Response(Http.OK, "File Uploaded Successfully..");
-        Response response3 = new Response(Http.BAD_REQUEST, "File Cannot Be Uploaded..");
+        Response response1 = new Response(HttpStatus.OK, "File Uploaded Successfully..");
+        Response response2 = new Response(HttpStatus.OK, "File Uploaded Successfully..");
+        Response response3 = new Response(HttpStatus.BAD_REQUEST, "File Cannot Be Uploaded..");
 
         // act & assert
         assertEquals(response1, response2);
@@ -58,8 +58,8 @@ class ResponseTest {
     @Test
     void testHashCode() {
         // arrange
-        Response response1 = new Response(Http.OK, Http.OK.getMessage());
-        Response response2 = new Response(Http.OK, Http.OK.getMessage());
+        Response response1 = new Response(HttpStatus.OK, HttpStatus.OK.getMessage());
+        Response response2 = new Response(HttpStatus.OK, HttpStatus.OK.getMessage());
 
         // act & assert
         assertEquals(response1.hashCode(), response2.hashCode());

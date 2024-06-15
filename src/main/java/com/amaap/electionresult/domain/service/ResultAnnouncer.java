@@ -3,13 +3,12 @@ package com.amaap.electionresult.domain.service;
 import com.amaap.electionresult.domain.model.PartyNameMapper;
 import com.amaap.electionresult.repository.impl.InMemoryElectionResultRepository;
 import com.amaap.electionresult.service.exception.ElectionResultException;
-import com.amaap.electionresult.service.exception.InvalidPartyCodeException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ResultAnnouncer {
-    PartyNameMapper partyNameMapper = new PartyNameMapper();
+     PartyNameMapper partyNameMapper = new PartyNameMapper();
 
     public void displayWinner() throws ElectionResultException {
         InMemoryElectionResultRepository inMemoryElectionResultRepository = InMemoryElectionResultRepository.getInstance();
